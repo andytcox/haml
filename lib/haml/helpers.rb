@@ -4,6 +4,14 @@ module Haml
   # that a Haml template is parsed in, so all these methods are at your
   # disposal from within the template.
   module Helpers
+    
+    def render(file)
+      content = File.read("src/haml/_#{file}.haml")
+      return Haml::Engine.new(content).render      
+    end
+    
+    
+    
     # An object that raises an error when \{#to\_s} is called.
     # It's used to raise an error when the return value of a helper is used
     # when it shouldn't be.
