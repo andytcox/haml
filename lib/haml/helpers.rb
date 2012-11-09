@@ -5,9 +5,9 @@ module Haml
   # disposal from within the template.
   module Helpers
     
-    def render(file)
+    def render(file, locals={})
       content = File.read("src/haml/_#{file}.haml")
-      return Haml::Engine.new(content).render      
+      return Haml::Engine.new(content).render(Object.new, locals)
     end
     
     
